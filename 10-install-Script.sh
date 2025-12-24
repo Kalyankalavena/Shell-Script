@@ -6,29 +6,49 @@ if [ $USERID -ne 0 ];
 then
   echo "ERROR:: You must have sudo access to execute this script"
   exit 1 #other than 0
-
   fi
 
-dnf install mysql -y
+dnf list installed mysql
 
-if [ $? -ne 0 ]
-
-then
-  echo "installing mysql .....FAILED" 
-  exit 1
+if [ $? -ne 0] # not installed
+   dnf install mysql -y
+   if [ $? -ne 0 ]
+   then 
+     echo "installing mysql .....FAILED" 
+     exit 1
 else
-  echo "installing mysql .....SUCCESS"
-  fi
+    echo "installing mysql .....SUCCESS"
+ fi
+else
+    echo "mysql is already installed"
+fi
 
-dnf install git -y
-if [ $? -ne 0 ]
 
+# if [ $? -ne 0 ]
+# then
+#   echo "installing git .....FAILED" 
+#   exit 1
+# else
+#   echo "installing git .....SUCCESS"
+# fi
+
+dnf list installed git
+if [ $? -ne 0] 
 then
-  echo "installing git .....FAILED" 
-  exit 1
+  dnf install git -y
+  if [ $? -ne 0 ]
+  then
+    echo "installing git .....FAILED" 
+    exit 1
 else
   echo "installing git .....SUCCESS"
-  fi
-
+fi
+#  if [ $? -ne 0 ]
+#   then
+#     echo "installing git .....FAILED" 
+#     exit 1
+# else
+#   echo "installing git .....SUCCESS"
+# fi
 
 
