@@ -6,5 +6,6 @@ read -s USERNAME  # Here username is a variable name
 
 echo "user name entered is :: $USERNAME"
 
-echo "please enter your password::"
-read -s PASSWORD  # Here password is a variable name
+echo "please enter your password::" 
+
+read -s PASSWORD  
