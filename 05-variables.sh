@@ -5,3 +5,6 @@ echo "please enter your user name::" # text entered here will be added as value 
 read -s USERNAME  # Here username is a variable name 
 
 echo "user name entered is :: $USERNAME"
+
+echo "please enter your password::"
+read -s PASSWORD  # Here password is a variable name
