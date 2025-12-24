@@ -1,5 +1,7 @@
 #!/bin/bash
 
-echo "please enter your user name::"
+echo "please enter your user name::" # text entered here will be added as value to variable 
 
-read USERNAME
+read USERNAME  # Here username is a variable name 
+
+echo "user name entered is :: $USERNAME"
