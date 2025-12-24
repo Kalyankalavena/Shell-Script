@@ -9,5 +9,7 @@ then
 
 dnf install mysql -y
 
-  
+dnf install git -y
+
+
 
