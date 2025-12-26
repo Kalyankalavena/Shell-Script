@@ -1,5 +1,4 @@
 #!/bin/bash
-
 echo -e "\nThis script demonstrates the use of colours in bash scripting\n"
 
 USERID=$(id -u)
@@ -35,22 +34,15 @@ then
   exit 1 #other than 0
 fi
 
-dnf list installed mysql* >>"$LOG_FILE_NAME" 2>/dev/null
-
-if [ $? -ne 0 ]
-then
-  dnf install mysql -y &>>"$LOG_FILE_NAME"
-  VALIDATE $? "Installing MySQL"
-else
-  echo -e "MySQL is already ... ${Y}INSTALLED${NC}"
-fi
-
-dnf list installed git &>>"$LOG_FILE_NAME" || true
-
-if [ $? -ne 0 ]
-then
-  dnf install git -y &>>"$LOG_FILE_NAME"
-  VALIDATE $? "Installing Git"
-else
-  echo -e "Git is already ... ${Y}INSTALLED${NC}"
-fi
+for package in $@
+do
+    dnf list installed "$package" &>>"$LOG_FILE_NAME" || true
+    
+    if [ $? -ne 0 ]
+    then
+        dnf install "$package" -y &>>"$LOG_FILE_NAME"
+        VALIDATE $? "Installing $package"
+    else
+        echo -e "$package is already ... ${Y}INSTALLED${NC}"
+    fi
+    done
