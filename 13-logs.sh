@@ -45,7 +45,7 @@ else
   echo -e "MySQL is already ... ${Y}INSTALLED${NC}"
 fi
 
-dnf list installed git &>>"$LOG_FILE_NAME"
+dnf list installed git &>>"$LOG_FILE_NAME" || true
 
 if [ $? -ne 0 ]
 then
