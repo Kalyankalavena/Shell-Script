@@ -35,7 +35,7 @@ then
   exit 1
 fi
 
-dnf list installed mysql* &>>"$LOG_FILE_NAME" || true
+dnf list installed mysql* >>"$LOG_FILE_NAME" 2>/dev/null
 
 if [ $? -ne 0 ]
 then
