@@ -32,7 +32,7 @@ if [ "$USERID" -ne 0 ]; then
   echo "ERROR:: You must have sudo access to execute this script"
   exit 1 #other than 0
 fi
-dnf list installed mysql &>>$LOG_FILE_NAME
+dnf list installed mysql &>>$LOG_FILE_NAME || true
 
 if [ $? -ne 0 ]
 then # not installed
