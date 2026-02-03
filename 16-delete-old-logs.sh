@@ -8,6 +8,8 @@ G="\e[0;32m"
 Y="\e[0;33m"
 NC="\e[0m"
 
+SOURCE_DIR="/home/ec2-user/app-logs"
+
 LOGS_FOLDER="/var/log/shellscript-logs"
 LOG_FILE=$(echo "$0" | cut -d "." -f1)
 TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
@@ -48,3 +50,15 @@ do
     fi
     done
 echo -e "\nScript execution completed. Logs can be found at: $LOG_FILE_NAME\n"
+
+Files_To_Delete=$(find "$SOURCE_DIR" -name "*.log" -mtime +14)
+echo "Files to be deleted:" &>>"$LOG_FILE_NAME"
+echo "$Files_To_Delete" &>>"$LOG_FILE_NAME"
+
+while 
+do
+  read -r file
+  do
+    rm -f "$file" &>>"$LOG_FILE_NAME"
+    VALIDATE $? "Deleting file: $file"
+  done <<< "$Files_To_Delete"
