@@ -23,28 +23,25 @@ VALIDATE() {
   fi
 }
 
-# Create logs folder if not exists
-mkdir -p "$LOGS_FOLDER"
-
-echo "Script started executing at: $TIMESTAMP" &>>"$LOG_FILE_NAME"
-
+CHECK_ROOT() {
 if [ "$USERID" -ne 0 ]
 then
   echo "ERROR:: You must have sudo access to execute this script"
-  exit 1 #other than 
-fi
+  exit 1 #other than 0
+  fi
+}
 
-for package in $@
-do
-    rpm -q "$package" &>>"$LOG_FILE_NAME"
+echo "Script started executing at: $TIMESTAMP" &>>"$LOG_FILE_NAME"
 
+CHECK_ROOT
+dnf install mysql -y &>>"$LOG_FILE_NAME"
+VALIDATE $? "Installing MySQL" 
 
-    if [ $? -ne 0 ]
-    then
-        dnf install "$package" -y &>>"$LOG_FILE_NAME"
-        VALIDATE $? "Installing $package"
-    else
-        echo -e "$package is already ... ${Y}INSTALLED${NC}"
-    fi
-    done
-echo -e "\nScript execution completed. Logs can be found at: $LOG_FILE_NAME\n"
+systemctl enable mysqld &>>"$LOG_FILE_NAME"
+VALIDATE $? "Enabling MySQL" 
+
+systemctl start mysqld &>>"$LOG_FILE_NAME"
+VALIDATE $? "Starting MySQL"
+
+mysql_secure_installation --set-root-pass ExpenseApp@1 &>>"$LOG_FILE_NAME"
+VALIDATE $? "Setting mysql root password"
