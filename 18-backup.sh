@@ -41,12 +41,12 @@ fi
 
 if [ ! -d "$SOURCE_DIR" ]
 then
-  echo -e "${R}ERROR:${NC} Source directory '$SOURCE_DIR' does not exist."
+  echo -e "${R}ERROR:${NC} Source directory '$SOURCE_DIR' does not exist. please check."
   exit 1
 fi
 if [ ! -d "$DEST_DIR" ]
 then  
-  echo -e "${R}ERROR:${NC} Destination directory '$DEST_DIR' does not exist."
+  echo -e "${R}ERROR:${NC} Destination directory '$DEST_DIR' does not exist. please check."
   exit 1
 fi
 
