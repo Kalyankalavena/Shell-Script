@@ -25,12 +25,13 @@ VALIDATE() {
   fi
 }
  usage() {
-  echo -e "\nUsage: $0 <source_directory> <destination_directory> <days[optional]>\n"
+   #echo -e "\nUsage: $0 <source_directory> <destination_directory> <days[optional]>\n"
+   echo -e "$R Usage:: $N backup <source_directory> <destination_directory> <days[optional]>\n"
   exit 1
 }
 
 mkdir -p /home/ec2-user/shellscript-logs/
-echo "Filename: $0" &>>"$LOG_FILE_NAME"
+
 
 if [ $# -lt 2 ]
 then
