@@ -39,6 +39,17 @@ then
   usage
 fi
 
+if [ ! -d "$SOURCE_DIR" ]
+then
+  echo -e "${R}ERROR:${NC} Source directory '$SOURCE_DIR' does not exist."
+  exit 1
+fi
+if [ ! -d "$DEST_DIR" ]
+then  
+  echo -e "${R}ERROR:${NC} Destination directory '$DEST_DIR' does not exist."
+  exit 1
+fi
+
 echo "Script started executing at: $TIMESTAMP" &>>"$LOG_FILE_NAME"
 
 
