@@ -57,7 +57,7 @@ echo "$Files_To_Delete" &>>"$LOG_FILE_NAME"
 
 while 
 do
-  read -r file
+  read -r filepath # here filepath is the variable name, you can give any name
   do
     rm -f "$file" &>>"$LOG_FILE_NAME"
     VALIDATE $? "Deleting file: $file"
