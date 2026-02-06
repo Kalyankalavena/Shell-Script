@@ -23,7 +23,9 @@ VALIDATE() {
   else
     echo -e "$2 ... ${G}SUCCESS${NC}"
   fi
+
 }
+
  usage() {
   echo -e "\nUsage: $0 <source_directory> <destination_directory> <days[optional]>\n"
   exit 1
