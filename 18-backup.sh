@@ -15,7 +15,7 @@ LOG_FILE=$(echo "$0" | awk -F "/" '{print $NF}' | cut -d "." -f1)
 TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
 LOG_FILE_NAME="$LOGS_FOLDER/${LOG_FILE}-${TIMESTAMP}.log"
 
- USAGE() {
+ usage() {
   echo -e "$R usage::$N sh 18-backup.sh <source_directory> <destination_directory> <days (optional)>"
   exit 1
 }
