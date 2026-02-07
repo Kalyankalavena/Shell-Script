@@ -10,3 +10,6 @@ doz
     echo "partition: $PARTITION, usage: $USAGE"
 
 done <<< "$DISK_USAGE
+
+
+
