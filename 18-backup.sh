@@ -46,24 +46,24 @@ FILES=$(find $SOURCE_DIR -name "*.log" -mtime +"$DAYS")
 
 if [ -n "$FILES" ] # true if there are files to zip
 then 
-  echo "Files are : $FILES"
-  ZIP_FILE="$DEST_DIR/app-logs-$TIMESTAMP.zip"
-  find $SOURCE_DIR -name "*.log" -mtime +"$DAYS" | zip -@ "$ZIP_FILE"
-  if [ -f "$ZIP_FILE" ]
-  then
-    echo -e "succesfully created zip files for files older than $DAYS"
-    while read -r filepath # here filepath is the variable name, you can give any name
-    do
-      echo "Deleting file: $filepath" &>>"$LOG_FILE_NAME"
-      rm -f "$filepath" &>>"$LOG_FILE_NAME"
-      VALIDATE $? "Deleting file: $filepath"
-  done <<< "$FILES"
-else
-    echo -e "${R}ERROR:${NC} Failed to create backup zip file."
-    exit 1
-  fi
+    echo "Files are : $FILES"
+    ZIP_FILE="$DEST_DIR/app-logs-$TIMESTAMP.zip"
+    find $SOURCE_DIR -name "*.log" -mtime +"$DAYS" | zip -@ "$ZIP_FILE"
+    if [ -f "$ZIP_FILE" ]
+    then
+        echo -e "succesfully created zip files for files older than $DAYS"
+        while read -r filepath # here filepath is the variable name, you can give any name
+        do
+          echo "Deleting file: $filepath" &>>"$LOG_FILE_NAME"
+          rm -f "$filepath" 
+          echo  "Deleting file: $filepath"
+       done <<< "$FILES"
+    else
+        echo -e "${R}ERROR:: $N Failed to create backup zip file."
+        exit 1
+    fi
 
 else
-  echo "no files found older than $DAYS"
+    echo "no files found older than $DAYS"
 fi
 
