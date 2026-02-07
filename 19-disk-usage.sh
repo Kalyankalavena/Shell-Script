@@ -9,7 +9,4 @@ do
     PARTITION=$(echo $line | awk -F " " '{print $NF}')
     echo "partition: $PARTITION, usage: $USAGE"
 
-done <<< "$DISK_USAGE
-
-
-
+done <<< "$DISK_USAGE"
