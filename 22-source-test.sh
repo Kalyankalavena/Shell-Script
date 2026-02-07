@@ -8,10 +8,8 @@ Files_To_Delete=$(find "$SOURCE_DIR" -name "*.log" -mtime +14)
 echo "Files to be deleted:" &>>"$LOG_FILE_NAME"
 echo "$Files_To_Delete" &>>"$LOG_FILE_NAME"
 
-while 
+while read -r filepath
 do
-  read -r filepath # here filepath is the variable name, you can give any name
-  do
-    rm -f "$file" &>>"$LOG_FILE_NAME"
-    VALIDATE $? "Deleting file: $file"
-  done <<< "$Files_To_Delete"
+  rm -f "$filepath" &>>"$LOG_FILE_NAME"
+  VALIDATE $? "Deleting file: $filepath"
+done <<< "$Files_To_Delete"
