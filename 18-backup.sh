@@ -25,7 +25,7 @@ echo "Filename: $0"
 
 if [ $# -lt 2 ]
 then
-    USAGE
+   USAGE
 fi
 
 if [ ! -d "$SOURCE_DIR" ]
