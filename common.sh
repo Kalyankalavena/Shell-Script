@@ -1,0 +1,26 @@
+#!/bin/bash
+echo -e "\nThis script demonstrates the use of colours in bash scripting\n"
+
+USERID=$(id -u)
+
+R="\e[0;31m"
+G="\e[0;32m"
+Y="\e[0;33m"
+NC="\e[0m"
+
+SOURCE_DIR="/home/ec2-user/app-logs"
+
+LOGS_FOLDER="/var/log/shellscript-logs"
+LOG_FILE=$(echo "$0" | cut -d "." -f1)
+TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
+LOG_FILE_NAME="$LOGS_FOLDER/${LOG_FILE}-${TIMESTAMP}.log"
+
+VALIDATE() {
+  if [ $1 -ne 0 ]
+  then
+    echo -e "$2 ... ${R}FAILURE${NC}"
+    exit 1
+  else
+    echo -e "$2 ... ${G}SUCCESS${NC}"
+  fi
+}
