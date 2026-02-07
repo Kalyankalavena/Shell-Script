@@ -25,18 +25,19 @@ echo "Filename: $0"
 
 if [ $# -lt 2 ]
 then
-  USAGE
+    USAGE
 fi
 
 if [ ! -d "$SOURCE_DIR" ]
 then
-  echo -e "${R}ERROR:${NC} Source directory '$SOURCE_DIR' does not exist. please check."
-  exit 1
+     echo -e "$SOURCE_DIR does not exist. please check."
+     exit 1
 fi
+
 if [ ! -d "$DEST_DIR" ]
 then  
-  echo -e "${R}ERROR:${NC} Destination directory '$DEST_DIR' does not exist. please check."
-  exit 1
+    echo -e "$DEST_DIR does not exist. please check."
+    exit 1
 fi
 
 echo "Script started executing at: $TIMESTAMP" &>>"$LOG_FILE_NAME"
