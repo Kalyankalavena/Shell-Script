@@ -4,3 +4,5 @@
 # this line comments the purpose of the script
 
 echo "Hello world" 
+
+echo " hii world"
