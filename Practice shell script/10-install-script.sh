@@ -7,3 +7,7 @@ if [ $USERID -ne 0 ]; then
 fi
 
 dnf install mysql -y
+
+dnf install git -y
+
+dnf install httpd -y
