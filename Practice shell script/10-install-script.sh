@@ -9,7 +9,7 @@ fi
 
 dnf install mysql -y
 if [ $? -ne 0 ]; then
-   echo "installation of mysql failed. Please check the logs."
+   echo "installation of mysql failed "
    exit 1
 fi
 else
@@ -18,7 +18,8 @@ else
 
 dnf install git -y
 if [ $? -ne 0 ]; then
-   echo "installation of git failed. Please check the logs."
+   echo "installation of git failed"
+
    exit 1   
 fi
 else
@@ -26,7 +27,7 @@ else
 
 dnf install httpd -y
 if [ $? -ne 0 ]; then
-   echo "installation of httpd failed. Please check the logs."
+   echo "installation of httpd failed."
    exit 1   
 fi
 else
