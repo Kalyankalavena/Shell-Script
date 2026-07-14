@@ -11,24 +11,23 @@ dnf install mysql -y
 if [ $? -ne 0 ]; then
    echo "installation of mysql failed "
    exit 1
-if
 else
     echo "installing mysql is successful."
+fi
 
 
 dnf install git -y
 if [ $? -ne 0 ]; then
    echo "installation of git failed"
-
    exit 1   
-if
 else
     echo "installing git is successful."
+fi
 
 dnf install httpd -y
 if [ $? -ne 0 ]; then
    echo "installation of httpd failed."
    exit 1   
-if
 else
     echo "installing httpd is successful."
+fi
