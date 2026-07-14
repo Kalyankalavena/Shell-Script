@@ -39,7 +39,5 @@ then # not installed
 
 else
       echo "installing git is ALREADY INSTALLED."
-fi
-else
-      echo "git is already installed."
+
 fi
