@@ -29,9 +29,6 @@ then # not installed
 else
       echo "installing mysql is ALREADY INSTALLED."
 fi
-else
-      echo "mysql is already installed."
-fi
 
 dnf list installed git
 
