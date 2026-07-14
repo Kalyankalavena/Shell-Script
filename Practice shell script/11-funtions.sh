@@ -30,7 +30,7 @@ else
       echo "installing mysql is ALREADY INSTALLED."
 fi
 else
-    echo "mysql is already installed."
+      echo "mysql is already installed."
 fi
 
 dnf list installed git
@@ -44,5 +44,5 @@ else
       echo "installing git is ALREADY INSTALLED."
 fi
 else
-    echo "git is already installed."
+      echo "git is already installed."
 fi
