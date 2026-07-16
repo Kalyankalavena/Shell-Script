@@ -38,6 +38,6 @@ then # not installed
     VALIDATE $? "installation of git"
 
 else
-      echo -e "$Y installing git is ALREADY INSTALLED. ${Y}"
+      echo "installing git is ALREADY INSTALLED."
 
 fi
