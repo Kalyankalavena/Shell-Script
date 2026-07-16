@@ -7,9 +7,10 @@ G="\e[1;32m" # Green
 Y="\e[1;33m" # Yellow]"
 
 LOGS_FOLDER="/var/log/shellscript-logs"
+mkdir -p "$LOGS_FOLDER"
 LOGS_FILE=$(echo $0 | cut -d "." -f1)
-TIMESTAMP=$(date +%Y-%m-%d %H:%M:%S)
-LOG_FILE_NAME="LOGS_FOLDER/LOGS_FILE-$TIMESTAMP.log"
+TIMESTAMP=$(date +"%Y-%m-%d-%H-%M-%S")
+LOG_FILE_NAME="$LOGS_FOLDER/$LOGS_FILE-$TIMESTAMP.log"
 
 VALIDATE(){
 
