@@ -22,7 +22,7 @@ else
     fi
 }
 
-echo " script execution started at: $LOG_FILE_NAME" >> $LOG_FILE_NAME
+echo " script execution started at: $LOG_FILE_NAME" >>$LOG_FILE_NAME
 
 if [ $USERID -ne 0 ]
 then # not installed
@@ -30,22 +30,22 @@ then # not installed
     exit 1 # other than 0 exit status indicates error
 fi
 
-dnf list installed mysql &> $LOG_FILE_NAME
+dnf list installed mysql &>>$LOG_FILE_NAME
 
 if [ $? -ne 0 ]; 
 then # not installed
-    dnf install mysql -y &>> $LOG_FILE_NAME
+    dnf install mysql -y &>>$LOG_FILE_NAME
     VALIDATE $? "installation of mysql"
 
 else
       echo -e "$Y installing mysql is ALREADY INSTALLED. ${Y}"
 fi
 
-dnf list installed git &>> $LOG_FILE_NAME
+dnf list installed git &>>$LOG_FILE_NAME
 
 if [ $? -ne 0 ]; 
 then # not installed
-    dnf install git -y &>> $LOG_FILE_NAME
+    dnf install git -y &>>$LOG_FILE_NAME
     VALIDATE $? "installation of git"
 
 else
