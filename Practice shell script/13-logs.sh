@@ -5,6 +5,7 @@ USERID=$(id -u)
 R="\e[1;31m" # Red
 G="\e[1;32m" # Green
 Y="\e[1;33m" # Yellow]"
+N="\e[0m" # No Color
 
 LOGS_FOLDER="/var/log/shellscript-logs"
 mkdir -p "$LOGS_FOLDER"
@@ -16,10 +17,10 @@ VALIDATE(){
 
 if [ $1 -ne 0 ]
 then
-      echo -e "$2 .... ${R}failed "
+      echo -e "$2 .... ${R}failed ${N}"
       exit 1
 else 
-  echo -e "$2 .... ${G}successful "
+  echo -e "$2 .... ${G}successful ${N}"
     fi
 }
 
@@ -39,7 +40,7 @@ then # not installed
     VALIDATE $? "installation of mysql"
 
 else
-      echo -e "$Y installing mysql is ALREADY INSTALLED. ${Y}"
+      echo -e "$Y installing mysql is ALREADY INSTALLED. ${Y} ${N}"
 fi
 
 dnf list installed git &>>$LOG_FILE_NAME
@@ -50,6 +51,6 @@ then # not installed
     VALIDATE $? "installation of git"
 
 else
-      echo -e "$Y installing git is ALREADY INSTALLED. ${Y}"
+      echo -e "$Y installing git is ALREADY INSTALLED. ${Y} ${N}"
 
 fi
